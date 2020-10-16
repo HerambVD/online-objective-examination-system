@@ -107,4 +107,4 @@ $export PYTHONPATH=$PYTHONPATH:/home/ubuntu/.local/bin
 
 To start the server run app.py file in the parent directory.
 
-Note: Once the flask app is deployed try importing tensorflow-gpu _v1.15.0_ in the python3 interpreter. If the import throws error then refer [this] (https://medium.com/@exesse/cuda-10-1-installation-on-ubuntu-18-04-lts-d04f89287130 "CUDA 10.1 installation on Ubuntu 20.04") article for proper installation of CUDA.
+Note: Once the flask app is deployed try importing tensorflow-gpu _v1.15.0_ in the python3 interpreter. If the import throws error then refer [this](https://medium.com/@exesse/cuda-10-1-installation-on-ubuntu-18-04-lts-d04f89287130 "CUDA 10.1 installation on Ubuntu 20.04") article for proper installation of CUDA.
