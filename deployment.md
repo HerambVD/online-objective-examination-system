@@ -29,7 +29,7 @@ $sudo apt-get install -y --no-install-recommends libnvinfer6=6.0.1-1+cuda10.0
 ```
 Check CUDA version:
 ```
-nvcc  – version
+$nvcc  – version
 ```
 Check if NVIDIA Driver is installed :
 ```
@@ -88,17 +88,20 @@ For detailed cuda installation information refer [this](https://medium.com/@exes
 
 ```
 $sudo apt install python3
-
 $sudo apt install python3-pip
-
-#copy the files
-
-$cd <to_parent_model_directory>
-
 $python3 -m pip --upgrade pip
-
+```
+Move/Upload the source code of the flask application on the AWS Instance.
+Change the present working directory to the main directory of the Flask application:
+```
+$cd <app_main_directory>
+```
+Install all dependencies and requirements:
+```
 $pip3 install -r requirements.txt
-
+```
+Set up the Python path variables:
+```
 $export PYTHONPATH=$PYTHONPATH:`pwd`
 $export PYTHONPATH=$PYTHONPATH:`pwd`/objectDetection
 $export PYTHONPATH=$PYTHONPATH:`pwd`/objectDetection/object_detection
