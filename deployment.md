@@ -1,10 +1,10 @@
-##Instructions to deploy Flask application on AWS EC2 G4 Instances
+## Instructions to deploy Flask application on AWS EC2 G4 Instances
 
-####Environment Setup
+#### Environment Setup
 
 Execute following commands:
 
-'''
+```
 $sudo apt-get update
 $sudo apt-get upgrade -y
 $sudo apt-get install build-essential
@@ -26,28 +26,28 @@ $sudo apt-get install --no-install-recommends
 $sudo apt-get install -y --no-install-recommends libnvinfer6=6.0.1-1+cuda10.0
     libnvinfer-dev=6.0.1-1+cuda10.10
     libnvinfer-plugin6=6.0.1-1+cuda10.0
-'''
+```
 Check CUDA version:
-'''
+```
 nvcc  – version
-'''
+```
 Check if NVIDIA Driver is installed :
-'''
+```
 $nvidia-smi
-'''
+```
 
 If CUDA version and NVIDIA Drive is found then move on to the Flask App Deployment otherwise follow the instructions below:
 
 The application that we have developed uses tesorflow-gpu _v1.15.0_, tf-_1.15.0_ requires cuda version 10-0 and cudnn intalled in the intance. To install these, execute the following commands in the Instance terminal.
 
 Remove any NVIDIA traces you may have on the instance.
-'''
+```
 $sudo rm /etc/apt/sources.list.d/cuda*
 $sudo apt remove --autoremove nvidia-cuda-toolkit
 $sudo apt remove --autoremove nvidia-*
-'''
+```
 
-'''
+```
 $sudo apt update
 $sudo add-apt-repository ppa:graphics-drivers
 
@@ -60,33 +60,33 @@ $sudo bash -c 'echo "deb http://developer.download.nvidia.com/compute/machine-le
 $sudo apt update
 $sudo apt install cuda-10-0
 $sudo apt install libcudnn7
-'''
+```
 
 The last step is to specify PATH to CUDA in '.profile' file. Open file by running:
-'''
+```
 $sudo vi ~/.profile
-'''
+```
 And add the following lines at the end of the file:
 
-'''
+```
 # set PATH for cuda 10.1 installation
 if [ -d "/usr/local/cuda-10.1/bin/" ]; then
     export PATH=/usr/local/cuda-10.1/bin${PATH:+:${PATH}}
     export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 fi
-'''
+```
 
 Restart and check the versions for the installation and Driver.
-'''
+```
 $nvcc  – version
 $nvidia-smi
-'''
+```
 For detailed cuda installation information refer [this](https://medium.com/@exesse/cuda-10-1-installation-on-ubuntu-18-04-lts-d04f89287130 "CUDA 10.1 installation on Ubuntu 20.04") . This article explains cuda 10.1 installation.
 
 
-####Flask app Deployment
+#### Flask app Deployment
 
-'''
+```
 $sudo apt install python3
 
 $sudo apt install python3-pip
@@ -103,7 +103,7 @@ $export PYTHONPATH=$PYTHONPATH:`pwd`
 $export PYTHONPATH=$PYTHONPATH:`pwd`/objectDetection
 $export PYTHONPATH=$PYTHONPATH:`pwd`/objectDetection/object_detection
 $export PYTHONPATH=$PYTHONPATH:/home/ubuntu/.local/bin
-'''
+```
 
 To start the server run app.py file in the parent directory.
 
