@@ -83,7 +83,7 @@ The default port number is 8080.
 Example usage of 2<sup>nd</sup> feature of Module II (In Python 3.x):
 
 Image Processing library named OpenCV is installed on the remote device.
-```
+```python
 import json
 import numpy as np
 import cv2
